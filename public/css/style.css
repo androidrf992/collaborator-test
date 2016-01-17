@@ -19,3 +19,19 @@ thead{
 thead  span{
     cursor: pointer;
 }
+
+.auth-form{
+    width: 90%;
+    max-width: 300px;
+    margin: 50px auto;
+    text-align: center;
+    border: 2px solid #B3AAAA;
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.auth-form input[type='checkbox']{
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
