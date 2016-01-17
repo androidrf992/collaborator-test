@@ -18,3 +18,24 @@ $('body').on('click', '.sort', function(){
     });
 });
 
+$('body').on('focus', '.search', function(){
+    $('.search').val('');
+});
+
+$('body').on('keyup', '.search', function(){
+
+    var column = $(this).attr('name');
+    var token = $('input[name="_token"]').val();
+    var value = $(this).val();
+
+    $.ajax({
+        type: 'post',
+        url: '/collaborator/search',
+        data: 'column=' + column + '&value=' + value + '&_token=' + token,
+        dataType: 'html',
+        success: function (data) {
+            $('tbody').html(data);
+        }
+    });
+});
+

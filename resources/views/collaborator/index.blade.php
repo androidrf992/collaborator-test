@@ -8,15 +8,27 @@
                     <tr>
                         <td>
                             <span class="sort" data-column="full_name">Full name</span>
+                            {!! Form::text('full_name', '', [
+                                'class' => 'form-control search',
+                            ]) !!}
                         </td>
                         <td>
                             <span class="sort" data-column="post">Post</span>
+                            {!! Form::text('post', '', [
+                                'class' => 'form-control search',
+                            ]) !!}
                         </td>
                         <td>
                             <span class="sort" data-column="salary">Salary</span>
+                            {!! Form::text('salary', '', [
+                                'class' => 'form-control search',
+                            ]) !!}
                         </td>
                         <td>
                             <span class="sort" data-column="create_at">Date</span>
+                            {!! Form::text('create_at', '', [
+                                'class' => 'form-control search',
+                            ]) !!}
                         </td>
                         <td>
                             <span>Manager</span>

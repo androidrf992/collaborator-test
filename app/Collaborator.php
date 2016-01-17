@@ -60,6 +60,11 @@ class Collaborator extends Node
         return $query->orderBy($column, $type);
     }
 
+    public function scopeSearch($query, $column, $value)
+    {
+        return $query->where($column, 'like', "{$value}%");
+    }
+
     // /**
     //  * Columns which restrict what we consider our Nested Set list
     //  *

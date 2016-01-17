@@ -17,5 +17,10 @@ Route::get('/', function () {
 
 Route::resource('collaborator', 'CollaboratorController');
 
-//Route::get('/collaborator/sort/{column}/{type}', 'CollaboratorController@sort');
-Route::post('/collaborator/sort', 'CollaboratorController@sort');
+Route::group(['prefix' => 'collaborator'], function(){
+
+    Route::post('sort', 'CollaboratorController@sort');
+
+    Route::post('search', 'CollaboratorController@search');
+});
+

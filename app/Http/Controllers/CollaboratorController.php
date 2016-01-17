@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Collaborator;
 use Illuminate\Http\Request;
 use App\Http\Requests\SortRequest;
-
+use App\Http\Requests\SearchRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -95,6 +95,16 @@ class CollaboratorController extends Controller
     {
 
         $model = $collaborator->sort($request->get('column'), $request->get('type'))->get();
+
+        return view('collaborator.blocks.filter', [
+            'model' => $model,
+        ]);
+    }
+
+    public function search(SearchRequest $request, Collaborator $collaborator)
+    {
+
+        $model = $collaborator->search($request->get('column'), $request->get('value'))->get();
 
         return view('collaborator.blocks.filter', [
             'model' => $model,
