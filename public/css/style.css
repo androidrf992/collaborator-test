@@ -1,0 +1,21 @@
+header{
+    background: #E8E4E4;
+    height: 50px;
+}
+
+nav{
+    height: 100%;
+    text-align: center;
+}
+
+nav > a{
+    line-height: 50px;
+}
+
+thead{
+    font-weight: bold;
+}
+
+thead  span{
+    cursor: pointer;
+}

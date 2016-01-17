@@ -55,6 +55,11 @@ class Collaborator extends Node
      */
     protected $guarded = array('id', 'parent_id', 'lft', 'rgt', 'depth');
 
+    public function scopeSort($query, $column, $type)
+    {
+        return $query->orderBy($column, $type);
+    }
+
     // /**
     //  * Columns which restrict what we consider our Nested Set list
     //  *

@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('collaborator', 'CollaboratorController');
+
+//Route::get('/collaborator/sort/{column}/{type}', 'CollaboratorController@sort');
+Route::post('/collaborator/sort', 'CollaboratorController@sort');
