@@ -1,8 +1,13 @@
 @extends('layouts.default')
 
+@section('assets')
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="/css/jquery.datetimepicker.css">
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="/js/jquery.datetimepicker.full.min.js"></script>
+@endsection
+
 @section('content')
-
-
     <div class="show">
         @foreach ($errors->all() as $error)
             <span class="error">{{$error}}</span>
@@ -103,5 +108,11 @@
                 },
             });
         });
+
+        jQuery('#create_at').datetimepicker({
+            format:'Y-m-d H:i',
+            lang:'ru'
+        });
+
     </script>
 @endsection

@@ -4,6 +4,7 @@
 namespace App;
 
 use Baum\Node;
+use Carbon\Carbon;
 
 
 class Collaborator extends Node
@@ -67,6 +68,12 @@ class Collaborator extends Node
         return $query->where($column, 'like', "{$value}%");
     }
 
+    /**
+     * create json string tree
+     *
+     * @param null $id
+     * @return string
+     */
     public function getTree($id = null)
     {
         $tree = $this->orderBy('lft')->where('parent_id', $id)->get();
@@ -85,6 +92,29 @@ class Collaborator extends Node
 
         return $jsonString;
 
+    }
+
+    /**
+     * change parent
+     *
+     * @param $parent_id
+     * @param $id
+     * @return mixed
+     */
+    public function changeChief($parent_id, $id)
+    {
+        $chief = $this->find($parent_id);
+
+        $model = $this->find($id);
+
+        $model->makeChildOf($chief);
+
+        return $model->isDescendantOf($chief);
+    }
+
+    public function getCreateAtAttribute($value)
+    {
+        return substr($value, 0, -3);
     }
 
 }

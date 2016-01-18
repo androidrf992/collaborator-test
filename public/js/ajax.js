@@ -38,19 +38,3 @@ $('body').on('keyup', '.search', function(){
         }
     });
 });
-
-$('body').on('click', '.delete', function(){
-
-    var token = $('input[name="_token"]').val();
-    var id = $(this).attr('data-id');
-
-    $.ajax({
-        type: 'post',
-        url: '/collaborator/' + id,
-        data: '_method=delete' + '&_token=' + token,
-        dataType: 'json',
-        success: function (data) {
-            console.log(data);
-        }
-    });
-});

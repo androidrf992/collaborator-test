@@ -1,5 +1,9 @@
 @extends('layouts.default')
 
+@section('assets')
+    <script src="/js/ajax.js"></script>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="content">
@@ -67,10 +71,6 @@
 
                                 {!! Html::link("/collaborator/{$collaborator->id}/edit", 'Edit', [
                                     'class' => 'btn btn-primary',
-                                ]) !!}
-                                {!! Form::button('Delete', [
-                                    'class' => 'btn btn-primary delete',
-                                    'data-id' => $collaborator->id,
                                 ]) !!}
                             </td>
                         </tr>

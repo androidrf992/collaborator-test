@@ -21,7 +21,7 @@ Route::group(['prefix' => 'collaborator'], function(){
     Route::post('sort', 'CollaboratorController@sort');
     Route::post('search', 'CollaboratorController@search');
     Route::post('person', 'CollaboratorController@person');
-//    Route::get('nodes', 'CollaboratorController@nodes');
+    Route::post('change-chief', 'CollaboratorController@changeChief');
 });
 
 Route::get('nodes', 'CollaboratorController@nodes');

@@ -15,7 +15,7 @@ class CollaboratorController extends Controller
 
     public function __construct()
     {
-//        $this->middleware('auth', ['except' => ['tree', 'nodes']]);
+        $this->middleware('auth', ['except' => ['tree', 'nodes', 'changeChief']]);
     }
 
     /**
@@ -117,6 +117,13 @@ class CollaboratorController extends Controller
         echo json_encode(['success']);
     }
 
+    /**
+     * return sorted collaborator list
+     *
+     * @param SortRequest $request
+     * @param Collaborator $collaborator
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function sort(SortRequest $request, Collaborator $collaborator)
     {
 
@@ -127,6 +134,13 @@ class CollaboratorController extends Controller
         ]);
     }
 
+    /**
+     * return search list
+     *
+     * @param SearchRequest $request
+     * @param Collaborator $collaborator
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function search(SearchRequest $request, Collaborator $collaborator)
     {
 
@@ -137,6 +151,12 @@ class CollaboratorController extends Controller
         ]);
     }
 
+    /**
+     * return json person list for autocomplete plugin
+     *
+     * @param Request $request
+     * @param Collaborator $collaborator
+     */
     public function person(Request $request, Collaborator $collaborator)
     {
         $model = $collaborator->search('full_name', $request->get('value'))->get();
@@ -144,6 +164,12 @@ class CollaboratorController extends Controller
         echo json_encode($model);
     }
 
+    /**
+     * return json tree
+     *
+     * @param Request $request
+     * @param Collaborator $collaborator
+     */
     public function nodes(Request $request, Collaborator $collaborator)
     {
         $data = $collaborator->getTree($request->get('node'));
@@ -151,5 +177,13 @@ class CollaboratorController extends Controller
         $json = json_decode($data, true);
 
         echo json_encode($json);
+    }
+
+    public function changeChief(Request $request, Collaborator $collaborator)
+    {
+
+        $data = $collaborator->changeChief($request->get('chief'), $request->get('id')) ? ['success'] : ['error'];
+
+        echo json_encode($data);
     }
 }

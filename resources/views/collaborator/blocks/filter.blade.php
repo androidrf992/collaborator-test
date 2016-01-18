@@ -12,16 +12,13 @@
         <td>
             {{$collaborator->create_at}}
         </td>
+        <td></td>
         <td>
             {!! Html::link("/collaborator/{$collaborator->id}", 'View', [
                 'class' => 'btn btn-primary',
             ]) !!}
 
             {!! Html::link("/collaborator/{$collaborator->id}/edit", 'Edit', [
-                'class' => 'btn btn-primary',
-            ]) !!}
-
-            {!! Html::link("/collaborator/{$collaborator->id}", 'Delete', [
                 'class' => 'btn btn-primary',
             ]) !!}
         </td>
