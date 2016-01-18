@@ -55,6 +55,8 @@ class Collaborator extends Node
      */
     protected $guarded = array('id', 'parent_id', 'lft', 'rgt', 'depth');
 
+    protected $fillable = ['full_name', 'post', 'salary' , 'photo', 'create_at'];
+
     public function scopeSort($query, $column, $type)
     {
         return $query->orderBy($column, $type);
@@ -65,10 +67,24 @@ class Collaborator extends Node
         return $query->where($column, 'like', "{$value}%");
     }
 
-    // /**
-    //  * Columns which restrict what we consider our Nested Set list
-    //  *
-    //  * @var array
-    //  */
-    // protected $scoped = array();
+    public function getTree($id = null)
+    {
+        $tree = $this->orderBy('lft')->where('parent_id', $id)->get();
+
+        $jsonString = '[';
+        foreach ($tree as $key => $item) {
+            if($key)
+                $jsonString .= ',';
+
+            $jsonString .= "{'label': \"{$item->full_name} ({$item->post})\", 'id': {$item->id}";
+            if($item->rgt - $item->lft > 1)
+                $jsonString .= ", 'load_on_demand': true";
+            $jsonString .= "}";
+        }
+        $jsonString .= ']';
+
+        return $jsonString;
+
+    }
+
 }

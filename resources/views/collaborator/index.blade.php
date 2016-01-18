@@ -31,6 +31,9 @@
                             ]) !!}
                         </td>
                         <td>
+                            <span>Photo</span>
+                        </td>
+                        <td>
                             <span>Manager</span>
                         </td>
                     </tr>
@@ -51,6 +54,13 @@
                                 {{$collaborator->create_at}}
                             </td>
                             <td>
+                                @if($collaborator->photo)
+                                    {!! Html::image('/uploads/small/' . $collaborator->photo, '', [
+                                    'class' => 'image',
+                                ]) !!}
+                                @endif
+                            </td>
+                            <td>
                                 {!! Html::link("/collaborator/{$collaborator->id}", 'View', [
                                     'class' => 'btn btn-primary',
                                 ]) !!}
@@ -58,9 +68,9 @@
                                 {!! Html::link("/collaborator/{$collaborator->id}/edit", 'Edit', [
                                     'class' => 'btn btn-primary',
                                 ]) !!}
-
-                                {!! Html::link("/collaborator/{$collaborator->id}", 'Delete', [
-                                    'class' => 'btn btn-primary',
+                                {!! Form::button('Delete', [
+                                    'class' => 'btn btn-primary delete',
+                                    'data-id' => $collaborator->id,
                                 ]) !!}
                             </td>
                         </tr>

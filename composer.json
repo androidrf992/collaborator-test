@@ -10,7 +10,8 @@
         "barryvdh/laravel-debugbar": "v2.1.0",
         "barryvdh/laravel-ide-helper": "v2.1.2",
         "laravelcollective/html": "v5.1.9",
-        "baum/baum": "1.1.1"
+        "baum/baum": "1.1.1",
+        "intervention/image": "2.3.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

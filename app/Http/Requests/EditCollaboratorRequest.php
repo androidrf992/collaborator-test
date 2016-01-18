@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class SortRequest extends Request
+class EditCollaboratorRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,11 @@ class SortRequest extends Request
     public function rules()
     {
         return [
-            'column' => 'in:post,salary,full_name,create_at',
-            'type' => 'in:asc,desc',
+            'full_name' => 'required',
+            'post' => 'in:SEO,manager,tester,developer',
+            'salary' => 'required|integer',
+            'date' => 'date',
+            'photo' => 'image',
         ];
     }
 }

@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function(){
     return view('welcome');
 });
 
@@ -20,7 +20,11 @@ Route::resource('collaborator', 'CollaboratorController');
 Route::group(['prefix' => 'collaborator'], function(){
     Route::post('sort', 'CollaboratorController@sort');
     Route::post('search', 'CollaboratorController@search');
+    Route::post('person', 'CollaboratorController@person');
+//    Route::get('nodes', 'CollaboratorController@nodes');
 });
+
+Route::get('nodes', 'CollaboratorController@nodes');
 
 Route::group(['prefix' => 'auth'], function(){
     Route::get('login', 'Auth\AuthController@getLogin');

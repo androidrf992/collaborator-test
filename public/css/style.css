@@ -35,3 +35,28 @@ thead  span{
     -moz-box-shadow: none;
     box-shadow: none;
 }
+
+.show{
+    width: 90%;
+    max-width: 700px;
+    margin: 40px auto;
+}
+
+.show span{
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+img{
+    margin: 5px;
+}
+.error{
+    color: red;
+    display: block;
+}
+
+.tree{
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+}
